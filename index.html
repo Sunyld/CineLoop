@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineLoop - Filmes & Séries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  
+  <!-- AOS CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+      border-bottom: 2px solid #d63031;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: #d63031;
+      font-size: 1.8rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d63031;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px;
+      background: linear-gradient(90deg, #1e1e1e, #2d2d2d);
+      margin-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 50%;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #d63031;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 12px 25px;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #d63031;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+
+    .buttons a:hover {
+      background-color: #b02327;
+    }
+
+    /* GIF Section */
+    .hero-gif {
+      max-width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-gif img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Slider Section */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    .slider-title {
+      text-align: center;
+      color: #d63031;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 50px;
+    }
+
+    .slider-container {
+      display: flex;
+      animation: slide 20s linear infinite;
+    }
+
+    .slider-item {
+      min-width: 250px;
+      margin: 0 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .slider-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Updates Section */
+    .updates {
+      padding: 30px 50px;
+      background-color: #222;
+      margin: 50px auto;
+      max-width: 1100px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .updates h3 {
+      color: #d63031;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .updates p {
+      font-size: 1rem;
+    }
+
+    /* About Section */
+    .about {
+      padding: 50px 50px;
+      background-color: #333;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      color: #d63031;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .about-card {
+      background-color: #444;
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .about-card i {
+      color: #d63031;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    /* Comments Section */
+    .comments {
+      padding: 50px 50px;
+      background-color: #222;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .comments h2 {
+      color: #d63031;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      background-color: #333;
+      color: #fff;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .comment p {
+      margin-bottom: 10px;
+    }
+
+    .comment .author {
+      font-weight: bold;
+    }
+
+    .comment .content {
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-content, .hero-gif {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      nav ul li {
+        margin-left: 10px;
+      }
+
+      nav ul li a {
+        font-size: 0.9rem;
+      }
+
+      .about-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body data-aos-easing="ease-out-cubic" data-aos-duration="1500">
+  <!-- Header -->
+  <header>
+    <h1>CineLoop</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#">Novidades</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>CineLoop - Filmes & Séries</h2>
+      <p>Descubra os mais destacados filmes de todos os gêneros, desde épicos repletos de ação até dramas emocionantes que tocam profundamente o coração.</p>
+      <div class="buttons">
+        <a href="base.apk" download>Baixar APK</a>
+      </div>
+    </div>
+    <div class="hero-gif">
+      <img src="../Landpage/src/video/Animated-iPhone-mockup.gif" alt="Mockup iPhone">
+    </div>
+  </section>
+
+  <!-- Slider Section -->
+  <section class="slider">
+    <div class="slider-title">Filmes Populares</div>
+    <div class="slider-container" id="slider-container"></div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="sobre">
+    <h2>Sobre</h2>
+    <div class="about-cards">
+      <div class="about-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Compatível com Android</h3>
+        <p>Baixe agora e desfrute de uma experiência única de streaming.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-fast-forward"></i>
+        <h3>Rápido</h3>
+        <p>Assista sem interrupções, com performance aprimorada.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-cogs"></i>
+        <h3>Suporte</h3>
+        <p>Compatível com a maioria dos dispositivos Android, faça o download imediatamente.</p>
+      </div>
+      <div class="about-card">
+        <i class="fas fa-user-check"></i>
+        <h3>Segurança</h3>
+        <p>Proteção e privacidade no uso do aplicativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 CineLoop. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const apiKey = '03825a6c51e2692492b5a2f1ce158236';
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`;
+
+    async function fetchMovies() {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error('Falha ao carregar os filmes populares');
+        }
+        const data = await response.json();
+        const movies = data.results;
+        const sliderContainer = document.getElementById('slider-container');
+        
+        movies.forEach(movie => {
+          const movieElement = document.createElement('div');
+          movieElement.classList.add('slider-item');
+          
+          const img = document.createElement('img');
+          img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+          img.alt = movie.title;
+          
+          
+          movieElement.appendChild(img);
+          sliderContainer.appendChild(movieElement);
+        });
+      } catch (error) {
+        console.error('Erro ao carregar os filmes:', error);
+      }
+    }
+
+    fetchMovies();
+
+    // Initialize AOS
+    AOS.init();
+  </script>
+
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+</html>
